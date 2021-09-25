@@ -7,6 +7,8 @@ call plug#begin('~/.vim/plugged')
 "
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'neovim/nvim-lsp' " nvim-lsp
+Plug 'davidhalter/jedi-vim'
+Plug 'vimlab/split-term.vim'
 Plug 'autozimu/LanguageClient-neovim' " LanguageClient-neovim 
 Plug 'junegunn/vim-easy-align' 
 Plug 'morhetz/gruvbox'
@@ -34,7 +36,8 @@ call plug#end()
 
 let mapleader="\<Space>"
 set relativenumber 
-set splitbelow
+set splitright
+
 colorscheme gruvbox
 highlight Normal     ctermbg=NONE guibg=NONE
 highlight LineNr     ctermbg=NONE guibg=NONE
@@ -55,6 +58,11 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>tt <cmd>TagbarToggle<cr>
+
+" Split Term
+"
+nnoremap <leader>jj :70VTerm <cr>
+
 nmap <silent> <leader>h :wincmd h<cr>
 nmap <silent> <leader>l :wincmd l<cr>
 nmap <silent> <leader>j :wincmd j<cr>
