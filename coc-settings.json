@@ -1,23 +1,15 @@
-  "languageserver": {
-    "ccls": {
-      "command": "ccls",
-      "args": ["--log-file=/tmp/ccls.log", "-v=1"],
-      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp", "h", "cu"],
-      "rootPatterns": [".ccls", "compile_commands.json"],
-      "initializationOptions": {
-         "cache": {
-           "directory": "/tmp/ccls"
-         },
-         "client": {
-          "snippetSupport": true
-         },
-          "index": {
-            "onChange": true
-          },
-          "highlight": { "lsRanges" : true },
-          "clangd.semanticHighlighting": true
-       }
+{
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "filetypes": ["c", "cpp", "objc", "objcpp", ".cu"],
+            "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                },
+                "highlight": { "lsRanges" : true }
+            }
+        }
     }
-  }
-  
-
+}

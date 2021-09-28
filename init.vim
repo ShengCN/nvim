@@ -7,7 +7,7 @@ call plug#begin('~/.vim/plugged')
 "
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'neovim/nvim-lsp' " nvim-lsp
-Plug 'autozimu/LanguageClient-neovim' " LanguageClient-neovim 
+Plug 'vimlab/split-term.vim'
 Plug 'junegunn/vim-easy-align' 
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -18,11 +18,12 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'vim-airline/vim-airline-themes'
+Plug 'autozimu/LanguageClient-neovim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'rhysd/vim-clang-format'
 Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " Initialize plugin system
 call plug#end()
@@ -34,7 +35,8 @@ call plug#end()
 
 let mapleader="\<Space>"
 set relativenumber 
-set splitbelow
+set splitright
+
 colorscheme gruvbox
 highlight Normal     ctermbg=NONE guibg=NONE
 highlight LineNr     ctermbg=NONE guibg=NONE
@@ -55,18 +57,18 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>tt <cmd>TagbarToggle<cr>
-nmap <silent> <leader>h :wincmd h<cr>
-nmap <silent> <leader>l :wincmd l<cr>
-nmap <silent> <leader>j :wincmd j<cr>
-nmap <silent> <leader>k :wincmd k<cr>
-nmap <leader>[ :wincmd <<cr>
-nmap <leader>] :wincmd ><cr>
+
+" Split Term
+"
+nnoremap <leader>jj :70VTerm <cr>
+
 
 " c++ syntax highlighting
 "
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
+
 let g:tagbar_position='topleft vertical'
 let g:tagbar_left = 1
 let g:tagbar_width=30
@@ -94,4 +96,17 @@ else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
+set encoding=utf8
+set guifont=DroidSansMono\ Nerd\ Font\ 11
+let g:airline_powerline_fonts = 1
 
+" Personal Shortcuts
+"
+noremap gd <c-w>]<CR>
+noremap gb <c-t>
+nmap <silent> <leader>h :wincmd h<cr>
+nmap <silent> <leader>l :wincmd l<cr>
+nmap <silent> <leader>j :wincmd j<cr>
+nmap <silent> <leader>k :wincmd k<cr>
+nmap <leader>[ :wincmd <<cr>
+nmap <leader>] :wincmd ><cr>
