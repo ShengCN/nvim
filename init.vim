@@ -24,6 +24,10 @@ Plug 'rhysd/vim-clang-format'
 Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'tikhomirov/vim-glsl'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'tpope/vim-fugitive'
+Plug 'beauwilliams/focus.nvim'
 
 " Initialize plugin system
 call plug#end()
@@ -32,10 +36,12 @@ call plug#end()
 :set shiftwidth=4
 :set expandtab
 :set autoread
+:set number
+:set splitright
+:set modifiable
 
 let mapleader="\<Space>"
 set relativenumber 
-set splitright
 
 colorscheme gruvbox
 highlight Normal     ctermbg=NONE guibg=NONE
@@ -60,7 +66,8 @@ nnoremap <leader>tt <cmd>TagbarToggle<cr>
 
 " Split Term
 "
-nnoremap <leader>jj :70VTerm <cr>
+nmap <C-t><C-t> :70VTerm<cr>
+" nnoremap <leader>jj :70VTerm <cr>
 
 
 " c++ syntax highlighting
@@ -110,3 +117,6 @@ nmap <silent> <leader>j :wincmd j<cr>
 nmap <silent> <leader>k :wincmd k<cr>
 nmap <leader>[ :wincmd <<cr>
 nmap <leader>] :wincmd ><cr>
+
+"You must run setup() to begin using focus
+lua require("focus").setup()
