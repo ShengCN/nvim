@@ -37,11 +37,11 @@ call plug#end()
 :set expandtab
 :set autoread
 :set number
-:set splitright
 :set modifiable
-
+set splitright
+set splitbelow
+:set relativenumber 
 let mapleader="\<Space>"
-set relativenumber 
 
 colorscheme gruvbox
 highlight Normal     ctermbg=NONE guibg=NONE
@@ -66,7 +66,7 @@ nnoremap <leader>tt <cmd>TagbarToggle<cr>
 
 " Split Term
 "
-nmap <C-t><C-t> :70VTerm<cr>
+nmap <C-t><C-t> :70Term<cr>
 " nnoremap <leader>jj :70VTerm <cr>
 
 
