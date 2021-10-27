@@ -13,10 +13,12 @@ Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'autozimu/LanguageClient-neovim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -32,15 +34,16 @@ Plug 'beauwilliams/focus.nvim'
 " Initialize plugin system
 call plug#end()
 
+:set expandtab
 :set tabstop=4
 :set shiftwidth=4
 :set expandtab
 :set autoread
 :set number
 :set modifiable
+:set relativenumber 
 set splitright
 set splitbelow
-:set relativenumber 
 let mapleader="\<Space>"
 
 colorscheme gruvbox
@@ -61,6 +64,7 @@ map <leader>nf :NERDTreeFind<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fn <cmd>Telescope file_browser<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>tt <cmd>TagbarToggle<cr>
 
@@ -104,7 +108,8 @@ else
 endif
 
 set encoding=utf8
-set guifont=DroidSansMono\ Nerd\ Font\ 11
+set fileencoding=utf-8
+set guifont=UbuntuMono\ Nerd\ Font\ 11
 let g:airline_powerline_fonts = 1
 
 " Personal Shortcuts
@@ -117,6 +122,11 @@ nmap <silent> <leader>j :wincmd j<cr>
 nmap <silent> <leader>k :wincmd k<cr>
 nmap <leader>[ :wincmd <<cr>
 nmap <leader>] :wincmd ><cr>
+nnoremap tn :tabnew<CR>
+nnoremap tq :tabclose<CR>
+nnoremap th :tabprevious<CR>
+nnoremap tl :tabnext<CR>
 
 "You must run setup() to begin using focus
 lua require("focus").setup()
+lua require'nvim-web-devicons'.has_loaded()
