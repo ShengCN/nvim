@@ -120,3 +120,4 @@ nmap <leader>] :wincmd ><cr>
 
 "You must run setup() to begin using focus
 lua require("focus").setup()
+":CocInstall coc-clangd
