@@ -9,7 +9,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'neovim/nvim-lsp' " nvim-lsp
 Plug 'vimlab/split-term.vim'
 Plug 'junegunn/vim-easy-align' 
-Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
+"Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
@@ -18,8 +19,8 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 Plug 'autozimu/LanguageClient-neovim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rhysd/vim-clang-format'
@@ -46,10 +47,23 @@ set splitright
 set splitbelow
 let mapleader="\<Space>"
 
-colorscheme gruvbox
-highlight Normal     ctermbg=NONE guibg=NONE
-highlight LineNr     ctermbg=NONE guibg=NONE
-highlight SignColumn ctermbg=NONE guibg=NONE
+" Important!!
+if has('termguicolors')
+  set termguicolors
+endif
+
+" For dark version.
+set background=dark
+
+" Set contrast.
+" This configuration option should be placed before `colorscheme gruvbox-material`.
+" Available values: 'hard', 'medium'(default), 'soft'
+let g:gruvbox_material_background = 'medium'
+colorscheme gruvbox-material
+
+"highlight Normal     ctermbg=NONE guibg=NONE
+"highlight LineNr     ctermbg=NONE guibg=NONE
+"highlight SignColumn ctermbg=NONE guibg=NONE
 
 let g:NERDTreeWinPos = "left"
 let NERDTreeShowHidden=0
@@ -107,10 +121,11 @@ else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
-set encoding=utf8
-set fileencoding=utf-8
-set guifont=UbuntuMono\ Nerd\ Font\ 11
-let g:airline_powerline_fonts = 1
+:set encoding=utf8
+:set fileencoding=utf-8
+:set guifont=UbuntuMono\ Nerd\ Font\ Mono:h14
+":set guifont=Consolas:h12
+"let g:airline_powerline_fonts = 0.1
 
 " Personal Shortcuts
 "
@@ -122,11 +137,16 @@ nmap <silent> <leader>j :wincmd j<cr>
 nmap <silent> <leader>k :wincmd k<cr>
 nmap <leader>[ :wincmd <<cr>
 nmap <leader>] :wincmd ><cr>
+nmap <leader>s :w<cr>
 nnoremap tn :tabnew<CR>
 nnoremap tq :tabclose<CR>
 nnoremap th :tabprevious<CR>
 nnoremap tl :tabnext<CR>
 
+
 "You must run setup() to begin using focus
 lua require("focus").setup()
 lua require'nvim-web-devicons'.has_loaded()
+
+let g:neovide_transparency=0.3
+let g:neovide_cursor_vfx_mode= "railgun"
