@@ -146,6 +146,7 @@ nnoremap tl :tabnext<CR>
 
 "You must run setup() to begin using focus
 lua require("focus").setup()
+":CocInstall coc-clangd
 lua require'nvim-web-devicons'.has_loaded()
 
 let g:neovide_transparency=0.3
