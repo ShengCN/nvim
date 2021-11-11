@@ -5,9 +5,9 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quote
 "
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-Plug 'neovim/nvim-lsp' " nvim-lsp
-Plug 'vimlab/split-term.vim'
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align 
+Plug 'neovim/nvim-lsp' " nvim-lsp 
+Plug 'vimlab/split-term.vim' 
 Plug 'junegunn/vim-easy-align' 
 Plug 'sainnhe/gruvbox-material'
 "Plug 'morhetz/gruvbox'
@@ -121,6 +121,19 @@ else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
 :set encoding=utf8
 :set fileencoding=utf-8
 :set guifont=UbuntuMono\ Nerd\ Font\ Mono:h14
@@ -129,24 +142,23 @@ endif
 
 " Personal Shortcuts
 "
-noremap gd <c-w>]<CR>
-noremap gb <c-t>
+" noremap gd <c-w>]<CR>
+" noremap gb <c-t>
 nmap <silent> <leader>h :wincmd h<cr>
 nmap <silent> <leader>l :wincmd l<cr>
 nmap <silent> <leader>j :wincmd j<cr>
 nmap <silent> <leader>k :wincmd k<cr>
 nmap <leader>[ :wincmd <<cr>
 nmap <leader>] :wincmd ><cr>
-nmap <leader>s :w<cr>
+nmap <leader>s :wa<cr>
+nmap <leader>nh :noh<cr>
 nnoremap tn :tabnew<CR>
 nnoremap tq :tabclose<CR>
 nnoremap th :tabprevious<CR>
 nnoremap tl :tabnext<CR>
 
-
 "You must run setup() to begin using focus
 lua require("focus").setup()
-":CocInstall coc-clangd
 lua require'nvim-web-devicons'.has_loaded()
 
 let g:neovide_transparency=0.3
